@@ -42,6 +42,8 @@ class Calculator:
         elif op == 'x' or op == '*':
             res = self.doMultiply(numOne, numTwo)
         elif op == "/":
+            if numTwo == 0:
+                raise ValueError("Cannot divide by 0.")
             res = self.doDivide(numOne, numTwo)
         print(res)
         self.numOne, numOne, self.numTwo, numTwo = "", 0, "", 0
@@ -56,4 +58,4 @@ class Calculator:
         return (numOne * numTwo)
 
     def doDivide(self, numOne, numTwo):
-        return (numOne / numTwo) if numTwo != 0 else 0
+        return (numOne / numTwo)

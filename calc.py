@@ -3,18 +3,23 @@
 import sys
 from Calculator import Calculator
 
-NUMBERS = "0123456789"
-OPERATORS = "+-*/"
+calc = Calculator()
+
+nums = calc.getNumbers()
+ops = calc.getOperators()
 
 def main():
     for line in sys.stdin:
         string = ""
         for c in line:
-            if c in NUMBERS or c in OPERATORS:
+            if c in nums or c in ops:
                 string += c
         
         # Call calculator function
-        Calculator.stringToInt(string)
+        if string == "":
+            print("Error: Invalid input")
+        else:
+            calc.stringToInt(string)
 
 if __name__ == '__main__':
     main()

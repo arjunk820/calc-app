@@ -40,6 +40,7 @@ class Calculator:
         elif op == "/":
             res = self.doDivide(numOne, numTwo)
         print(res)
+        self.numOne, numOne, self.numTwo, numTwo = "", 0, "", 0
         
     def doAdd(self, numOne, numTwo):
         return (numOne + numTwo)

@@ -1,6 +1,9 @@
 import sys
 
+# This is the calculator class I created
 class Calculator:
+
+    # Constructor
     def __init__(self) -> None:
         self.numbers = "0123456789"
         self.operators = "+-*x/"
@@ -15,8 +18,8 @@ class Calculator:
     def getOperators(self):
         return self.operators
 
-    # Consider negative numbers application
-    def stringToInt(self, input):
+    # Parses the operation into numbers and operators
+    def parseEquation(self, input):
         
         for c in input:
             if c in self.operators:
@@ -28,6 +31,7 @@ class Calculator:
 
         self.doOperation(int(self.numOne), int(self.numTwo), self.operator)
 
+    # Determines which operation to use
     def doOperation(self, numOne, numTwo, op):
 
         res = 0

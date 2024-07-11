@@ -18,6 +18,7 @@ def main():
         # Call calculator function
         if string == "":
             print("Error: Invalid input")
+            break
         else:
             calc.stringToInt(string)
 

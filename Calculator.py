@@ -6,7 +6,7 @@ class Calculator:
         self.operators = "+-*x/"
         self.numOne = ""
         self.numTwo = ""
-        self.operator = ""
+        self.operator = "+"
         self.error = False
     
     def getNumbers(self):
@@ -17,39 +17,38 @@ class Calculator:
 
     # Consider negative numbers application
     def stringToInt(self, input):
-        if input == "":
-            self.error = True
-
+        
         for c in input:
-            if c in self.numbers:
-                self.numTwo += c
-            elif c in self.operators:
-                self.operator += c
+            if c in self.operators:
+                self.operator = c
                 self.numOne = self.numTwo
-                if len(self.operator) > 1:
-                    self.error = True
+                self.numTwo = ""
+            else:
+                self.numTwo += c
+
+        self.doOperation(int(self.numOne), int(self.numTwo), self.operator)
+
+    def doOperation(self, numOne, numTwo, op):
+
+        res = 0
+        if op == "+":
+            res = self.doAdd(numOne, numTwo)
+        elif op == "-":
+            res = self.doSubtract(numOne, numTwo)
+        elif op == 'x' or op == '*':
+            res = self.doMultiply(numOne, numTwo)
+        elif op == "/":
+            res = self.doDivide(numOne, numTwo)
+        print(res)
         
-        if self.numOne == "":
-            self.numOne = 0
-        else:
-            self.numOne = int(self.numOne)
-        
-        if self.numTwo == "":
-            self.numTwo = 0
-        else:
-            self.numTwo = int(self.numTwo)
+    def doAdd(self, numOne, numTwo):
+        return (numOne + numTwo)
 
-        self.doOperation(self)
+    def doSubtract(self, numOne, numTwo):
+        return (numOne - numTwo)
+    
+    def doMultiply(self, numOne, numTwo):
+        return (numOne * numTwo)
 
-    def doOperation(self):
-
-        if self.operator == "+":
-            self.doAdd(self)
-        elif self.operator == "-":
-            self.doSubtract(self)
-        elif self.operator == "x" or self.operator == "*":
-            self.doMultiply(self)
-        elif self.operator == "/":
-            self.doDivide(self)
-        else:
-            print("Error: Invalid operator.")
+    def doDivide(self, numOne, numTwo):
+        return (numOne / numTwo) if numTwo != 0 else 0
